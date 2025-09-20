@@ -7,9 +7,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Importa tus componentes
 import WelcomeScreen from './components/WelcomeScreen';
 import LoginScreen from './components/LoginScreen';
-/*import DrawerNavigator from './components/DrawerNavigator';
 import Registrate1 from './components/Registrate1';
 import Registrate2 from './components/Registrate2';
+
+/*import DrawerNavigator from './components/DrawerNavigator';
 import RegistrateSalud from './components/RegistrateSalud';
 import RegistrateSalud2 from './components/RegistrateSalud2';
 import RegistrateSalud3 from './components/RegistrateSalud3';
@@ -37,9 +38,9 @@ export default function App() {
       <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-{/*     <Stack.Screen name="MainHome" component={DrawerNavigator} />
         <Stack.Screen name="Registrate1" component={Registrate1} />
         <Stack.Screen name="Registrate2" component={Registrate2} />
+{/*     <Stack.Screen name="MainHome" component={DrawerNavigator} />
         <Stack.Screen name="RegistrateSalud" component={RegistrateSalud} />
         <Stack.Screen name="RegistrateSalud2" component={RegistrateSalud2} />
         <Stack.Screen name="RegistrateSalud3" component={RegistrateSalud3} />
