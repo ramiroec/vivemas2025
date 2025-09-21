@@ -1,8 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Share, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Share, Image, Alert } from 'react-native';
 import { Circle } from 'react-native-progress';
 import { Ionicons } from '@expo/vector-icons';
-import ViewShot from 'react-native-view-shot';
+// react-native-view-shot is a native module. In Expo Go it may not be available
+// so we require it dynamically and fall back to a plain View when it's missing.
+let ViewShot: any = null;
+try {
+  // require at runtime so Metro doesn't try to load native module when running in Expo Go
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  ViewShot = require('react-native-view-shot').default;
+} catch (e) {
+  ViewShot = null;
+}
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // --------------------------
@@ -25,7 +34,7 @@ const DailyHistory: React.FC<Props> = ({ route, navigation }) => {
   const [isCapturing, setIsCapturing] = useState(false);
 
   const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-  const viewShotRef = useRef<ViewShot>(null);
+  const viewShotRef = useRef<any>(null);
 
   useEffect(() => {
     if (dailyGoals && Object.keys(dailyGoals).length > 0) {
@@ -62,24 +71,35 @@ const DailyHistory: React.FC<Props> = ({ route, navigation }) => {
   };
 
   const handleShare = async () => {
-    if (!viewShotRef.current) return;
+    // If view-shot isn't available (e.g. running in Expo Go) inform the user
+    if (!viewShotRef.current || typeof viewShotRef.current.capture !== 'function') {
+      Alert.alert(
+        'No disponible',
+        'La función de captura no está disponible en esta versión (Expo Go). Para usarla instala el paquete react-native-view-shot y reconstruye la app (o usa un dev client).'
+      );
+      return;
+    }
 
     try {
       setIsCapturing(true);
-      const uri = await viewShotRef.current?.capture?.();
+      const uri = await viewShotRef.current.capture();
       if (uri) {
         await Share.share({ url: uri, title: 'Compartir captura de pantalla' });
       }
-      setIsCapturing(false);
     } catch (error) {
       console.error('Error compartiendo', error);
+    } finally {
       setIsCapturing(false);
     }
   };
 
+  // Use ViewShot when available, otherwise fallback to a plain View so the
+  // app doesn't crash in environments where the native module isn't linked.
+  const ViewShotComp = ViewShot ?? View;
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ViewShot ref={viewShotRef} style={[styles.viewShot, { backgroundColor: '#ffffff' }]}>
+      <ViewShotComp ref={viewShotRef} style={[styles.viewShot, { backgroundColor: '#ffffff' }]}>
         <View style={styles.header}>
           <Ionicons
             name="chevron-back-outline"
@@ -155,7 +175,7 @@ const DailyHistory: React.FC<Props> = ({ route, navigation }) => {
         <View style={styles.logoContainer}>
           <Image source={require('../assets/isologovariante_2.png')} style={styles.logo} />
         </View>
-      </ViewShot>
+  </ViewShotComp>
     </ScrollView>
   );
 };

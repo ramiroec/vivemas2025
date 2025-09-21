@@ -29,8 +29,7 @@
     "react-native-health-connect": "^3.4.0",
     "react-native-progress": "^5.0.1",
     "react-native-svg": "15.12.1",
-    "react-native-view-shot": "4.0.3",
-    "undefined": "react-native-vector-icons/FontAwesome"
+    "react-native-view-shot": "^4.0.3"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
