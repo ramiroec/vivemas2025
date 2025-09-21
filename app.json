@@ -28,7 +28,9 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      "react-native-health-connect",
+      "react-native-health"
     ],
     "extra": {
       "eas": {
