@@ -23,7 +23,7 @@ import { obtenerPasosYCaloriasPorFechaAndroid } from './obtenerPasosYCaloriasPor
 import { obtenerPasosYCaloriasPorFechaIOS } from './obtenerPasosYCaloriasPorFechaIOS';
 import * as Font from 'expo-font';
 import { Buffer } from 'buffer';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
