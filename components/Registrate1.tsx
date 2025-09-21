@@ -10,6 +10,7 @@ import {
   Linking,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
@@ -138,9 +139,20 @@ const Registrate1: React.FC = () => {
             de uso.
           </Text>
 
-          <TouchableOpacity style={styles.signUpButton} onPress={handleNext}>
-            <Text style={styles.signUpButtonText}>Continuar</Text>
-          </TouchableOpacity>
+
+                      <View style={styles.buttonContainer}>
+                        <Pressable
+                          onPress={handleNext}
+                          style={({ pressed }) => [
+                            styles.signUpButton,
+                            pressed && styles.signUpButtonPressed,
+                          ]}
+                          accessibilityRole="button"
+                          accessibilityLabel="Continuar al Paso 2"
+                        >
+                        <Text style={styles.signUpButtonText}>Continuar al Paso 2</Text>
+                        </Pressable>
+                      </View>
 
           <View style={styles.spacer} />
         </ScrollView>
@@ -218,18 +230,6 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  signUpButton: {
-    backgroundColor: '#3a90e6',
-    borderRadius: 8,
-    paddingVertical: 15,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  signUpButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: '500',
-  },
   policyText: {
     fontSize: 14,
     color: 'gray',
@@ -248,6 +248,38 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 12,
     textAlign: 'center',
+  },
+    signUpButton: {
+    backgroundColor: '#3a90e6',
+    borderRadius: 12,            // más redondeado
+    height: 52,                  // un poco más alto
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    paddingHorizontal: 20,
+    // sombra (iOS)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 10,
+    // elevación (Android)
+    elevation: 6,
+  },
+  signUpButtonPressed: {
+    opacity: 0.85,
+    transform: [{ translateY: 1 }],
+  },
+  signUpButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  /* Estilos existentes/añadidos para el contenedor del botón */
+  buttonContainer: {
+    marginTop: 16,
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 8,
   },
 });
 

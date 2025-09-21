@@ -9,12 +9,12 @@ import WelcomeScreen from './components/WelcomeScreen';
 import LoginScreen from './components/LoginScreen';
 import Registrate1 from './components/Registrate1';
 import Registrate2 from './components/Registrate2';
+import Registrate3 from './components/Registrate3';
 
 /*import DrawerNavigator from './components/DrawerNavigator';
 import RegistrateSalud from './components/RegistrateSalud';
 import RegistrateSalud2 from './components/RegistrateSalud2';
 import RegistrateSalud3 from './components/RegistrateSalud3';
-import Registrate3 from './components/Registrate3';
 import RecuperarContrasena from './components/RecuperarContrasena';
 import ListadoCanje from './components/ListadoCanje';
 import PremiosScreen from './components/PremiosScreen';
@@ -40,11 +40,12 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Registrate1" component={Registrate1} />
         <Stack.Screen name="Registrate2" component={Registrate2} />
+        <Stack.Screen name="Registrate3" component={Registrate3} />
+
 {/*     <Stack.Screen name="MainHome" component={DrawerNavigator} />
         <Stack.Screen name="RegistrateSalud" component={RegistrateSalud} />
         <Stack.Screen name="RegistrateSalud2" component={RegistrateSalud2} />
         <Stack.Screen name="RegistrateSalud3" component={RegistrateSalud3} />
-        <Stack.Screen name="Registrate3" component={Registrate3} />
         <Stack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
         <Stack.Screen name="ListadoCanje" component={ListadoCanje} />
         <Stack.Screen name="PremiosScreen" component={PremiosScreen} />
