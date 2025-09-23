@@ -192,7 +192,7 @@ const MetaScreen: React.FC<Props> = ({ navigation }) => {
             </View>
 
             {/* Meta Mensual y Anual */}
-            <TouchableOpacity onPress={() => navigation.navigate('MetaAnual')}>
+            <View>
               <View style={styles.goalContainer}>
                 <View style={styles.header}>
                   <Text style={styles.goalTitle}>Meta Mensual</Text>
@@ -211,9 +211,9 @@ const MetaScreen: React.FC<Props> = ({ navigation }) => {
                   </View>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('MetaAnual')}>
+            <View>
               <View style={styles.goalContainer}>
                 <View style={styles.header}>
                   <Text style={styles.goalTitle}>Meta Anual</Text>
@@ -232,7 +232,7 @@ const MetaScreen: React.FC<Props> = ({ navigation }) => {
                   </View>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
           </>
         )}
       </ScrollView>

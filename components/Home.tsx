@@ -9,7 +9,7 @@ import PremiosScreen from './PremiosScreen';
 import ListadoCanje from './ListadoCanje';
 import VerPremio from './VerPremio';
 import DailyHistory from './DailyHistory';
-import MetaAnual from './MetaAnual';
+// MetaAnual screen removed
 import UserScreen from './UserScreen';
 
 // Define las rutas disponibles
@@ -40,7 +40,6 @@ function MetaStack(): JSX.Element {
   return (
     <MetaStackNav.Navigator screenOptions={{ headerShown: false }}>
       <MetaStackNav.Screen name="MetaScreen" component={MetaScreen} />
-      <MetaStackNav.Screen name="MetaAnual" component={MetaAnual} />
       <MetaStackNav.Screen name="DailyHistory" component={DailyHistory} />
     </MetaStackNav.Navigator>
   );
