@@ -59,30 +59,33 @@ function PrizesStack(): JSX.Element {
 const HomeTabs: React.FC = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName: keyof typeof Ionicons.glyphMap = 'home';
-
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Meta') {
-            iconName = focused ? 'list' : 'list-outline';
-          } else if (route.name === 'Premios') {
-            iconName = focused ? 'gift' : 'gift-outline';
-          } else if (route.name === 'Usuario') {
-            iconName = focused ? 'person' : 'person-outline';
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
+          let iconName = 'home-outline';
+          if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
+          else if (route.name === 'Meta') iconName = focused ? 'list' : 'list-outline';
+          else if (route.name === 'Premios') iconName = focused ? 'gift' : 'gift-outline';
+          else if (route.name === 'Usuario') iconName = focused ? 'person' : 'person-outline';
+          return <Ionicons name={iconName as any} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#2c9dd1',
         tabBarInactiveTintColor: 'gray',
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
-          backgroundColor: 'white',
-          borderTopWidth: 1,
-          borderTopColor: '#e0e0e0',
-          height: 60,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: 64,
           paddingBottom: 10,
+          backgroundColor: '#ffffff',
+          borderTopWidth: 0,
+          elevation: 12,
+          shadowColor: '#000',
+          shadowOpacity: 0.08,
+          shadowRadius: 8,
+          zIndex: 100,
         },
         headerShown: false,
       })}

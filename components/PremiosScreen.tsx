@@ -164,6 +164,8 @@ const PremiosScreen: React.FC<Props> = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
         style={styles.container}
+        contentContainerStyle={{ paddingBottom: 140 }}
+        keyboardShouldPersistTaps="handled"
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#2c9dd1']} />}
       >
         <View style={styles.userTypeContainer}>

@@ -103,41 +103,44 @@ const ListadoCanje: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Premios</Text>
-          <View style={styles.pointsContainer}>
-            <Text style={styles.pointsText}>🌞 Puntos: {puntos}</Text>
-          </View>
-        </View>
+      <ScrollView
+        contentContainerStyle={[styles.container, { paddingBottom: 140 }]}
+        keyboardShouldPersistTaps="handled"
+      >
+         <View style={styles.header}>
+           <Text style={styles.title}>Premios</Text>
+           <View style={styles.pointsContainer}>
+             <Text style={styles.pointsText}>🌞 Puntos: {puntos}</Text>
+           </View>
+         </View>
 
-        <View style={styles.tabs}>
-          <TouchableOpacity
-            style={styles.tabButton}
-            onPress={() => navigation.navigate('PremiosScreen')}
-          >
-            <Text style={styles.tabText}>Disponibles</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('ListadoCanje')}>
-            <Text style={[styles.tabText, styles.activeTab]}>Mis Canjes</Text>
-          </TouchableOpacity>
-        </View>
+         <View style={styles.tabs}>
+           <TouchableOpacity
+             style={styles.tabButton}
+             onPress={() => navigation.navigate('PremiosScreen')}
+           >
+             <Text style={styles.tabText}>Disponibles</Text>
+           </TouchableOpacity>
+           <TouchableOpacity onPress={() => navigation.navigate('ListadoCanje')}>
+             <Text style={[styles.tabText, styles.activeTab]}>Mis Canjes</Text>
+           </TouchableOpacity>
+         </View>
 
-        {canjes.map((canje) => (
-          <View key={canje.id} style={styles.card}>
-            <Text style={styles.cardTitle}>{canje.premio}</Text>
-            <Text style={styles.cardSubtitle}>{canje.comercio}</Text>
-            <Text style={styles.cardDate}>Fecha: {canje.fecha}</Text>
-            <Text style={getStatusStyle(canje.estado)}>{canje.estado}</Text>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('CanjePremio', { premio: canje })}
-            >
-              <Text style={styles.buttonText}>Ver Código</Text>
-            </TouchableOpacity>
-          </View>
-        ))}
-      </ScrollView>
+         {canjes.map((canje) => (
+           <View key={canje.id} style={styles.card}>
+             <Text style={styles.cardTitle}>{canje.premio}</Text>
+             <Text style={styles.cardSubtitle}>{canje.comercio}</Text>
+             <Text style={styles.cardDate}>Fecha: {canje.fecha}</Text>
+             <Text style={getStatusStyle(canje.estado)}>{canje.estado}</Text>
+             <TouchableOpacity
+               style={styles.button}
+               onPress={() => navigation.navigate('CanjePremio', { premio: canje })}
+             >
+               <Text style={styles.buttonText}>Ver Código</Text>
+             </TouchableOpacity>
+           </View>
+         ))}
+       </ScrollView>
     </SafeAreaView>
   );
 };

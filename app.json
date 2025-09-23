@@ -7,31 +7,21 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSHealthShareUsageDescription": "Se utilizarán tus datos de salud para mostrar pasos y calorías.",
+        "NSHealthUpdateUsageDescription": "Se utilizarán tus datos de salud para mostrar y actualizar información relacionada con pasos y calorías."
+      }
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "ACTIVITY_RECOGNITION",
+        "BODY_SENSORS",
+        "ACCESS_FINE_LOCATION"
+      ],
       "package": "com.tekisolutions.vivemasApp"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-font",
-      "react-native-health-connect",
-      "react-native-health"
-    ],
     "extra": {
       "eas": {
         "projectId": "a6f34c77-bfc8-4914-9900-9383f4f74eab"

@@ -123,8 +123,11 @@ const UserScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <View style={styles.container}>
+      <ScrollView
+        contentContainerStyle={[styles.scrollViewContent, { paddingBottom: 140 }]}
+        keyboardShouldPersistTaps="handled"
+      >
+         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Text style={styles.userName}>{nombre || 'Usuario'}</Text>
             <Text style={styles.userEmail}>{email || 'Usuario'}</Text>

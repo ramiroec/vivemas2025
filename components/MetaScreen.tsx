@@ -116,8 +116,8 @@ const MetaScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={styles.container}>
-        <View style={styles.headerContainer}>
+      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 140 }} keyboardShouldPersistTaps="handled">
+         <View style={styles.headerContainer}>
           <Image source={require('../assets/isologovariante_2.png')} style={styles.logo} />
           <View style={styles.headerTextContainer}>
             <Text style={styles.greeting}>{greeting}, {nombre || 'Usuario'}</Text>

@@ -139,8 +139,8 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
     };
 
     fetchData();
-    const intervalId = setInterval(fetchData, 15000);
-    return () => clearInterval(intervalId);
+    // Ejecutar una vez (sin intervalos periódicos)
+    return () => {};
   }, []);
 
   const updatePoints = async () => {
@@ -156,8 +156,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   };
 
   useEffect(() => {
-    const interval = setInterval(updatePoints, 10000);
-    return () => clearInterval(interval);
+    // Ejecutar una vez (sin intervalos periódicos)
+    updatePoints();
+    return () => {};
   }, []);
 
   const shareConsejo = async () => {
@@ -205,8 +206,8 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
       }
     };
     fetchStepsAndCalories();
-    const intervalId = setInterval(fetchStepsAndCalories, 15000);
-    return () => clearInterval(intervalId);
+    // Ejecutar una vez (sin intervalos periódicos)
+    return () => {};
   }, []);
 
   const currentTime = new Date();
@@ -219,8 +220,12 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={styles.container}>
- <View style={styles.headerContainer}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={[styles.scrollViewContent, { paddingBottom: 140 }]}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.headerContainer}>
           <Image source={require('../assets/isologovariante_2.png')} style={styles.logo} />
           <View style={styles.headerTextContainer}>
             <Text style={styles.greeting}>{greeting}, {nombre || 'Usuario'}</Text>
@@ -283,7 +288,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
             <Text style={styles.pointsSubtitle}>Puntos acumulados</Text>
           </View>
           <View style={styles.pointsButtonsContainer}>
-            <TouchableOpacity style={styles.pointsButton} onPress={() => navigation.navigate('PremiosScreen')}>
+            <TouchableOpacity style={styles.pointsButton} onPress={() => navigation.navigate('Premios')}>
               <Text style={styles.pointsButtonText}>Canjear mis puntos</Text>
             </TouchableOpacity>
           </View>
