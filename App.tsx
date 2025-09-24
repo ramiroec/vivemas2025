@@ -38,8 +38,16 @@ export default function App() {
         if (Platform.OS === 'android' && NavigationBar?.setVisibilityAsync) {
           await NavigationBar.setVisibilityAsync('hidden');
           // comportamiento overlay-swipe mejora interacción con gestos
+          // setBehaviorAsync may not be supported on devices with edge-to-edge enabled
+          // or certain platform/runtime combinations. Guard with a try/catch to avoid
+          // warnings/crashes when it's not supported.
           if (NavigationBar.setBehaviorAsync) {
-            await NavigationBar.setBehaviorAsync('overlay-swipe');
+            try {
+              await NavigationBar.setBehaviorAsync('overlay-swipe');
+            } catch (err) {
+              // No-op: the platform doesn't support changing the nav bar behavior.
+              // This avoids the runtime warning about edge-to-edge.
+            }
           }
         }
       } catch (e) {
