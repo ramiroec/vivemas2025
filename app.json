@@ -22,6 +22,16 @@
       ],
       "package": "com.tekisolutions.vivemasApp"
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26
+          }
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "a6f34c77-bfc8-4914-9900-9383f4f74eab"
