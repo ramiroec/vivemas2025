@@ -18,7 +18,12 @@
       "permissions": [
         "ACTIVITY_RECOGNITION",
         "BODY_SENSORS",
-        "ACCESS_FINE_LOCATION"
+        "ACCESS_FINE_LOCATION",
+        "android.permission.health.READ_STEPS",
+        "android.permission.health.READ_CALORIES",
+        "android.permission.health.READ_ACTIVE_CALORIES",
+        "android.permission.health.READ_HEART_RATE",
+        "android.permission.health.READ_SLEEP"
       ],
       "package": "com.tekisolutions.vivemasApp"
     },
